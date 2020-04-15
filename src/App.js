@@ -1,6 +1,7 @@
 import React from 'react';
 //import logo from './logo.svg';
 import './App.css';
+import Sidebar from './Sidebar'
 
 import Ring from "ringjs";
 
@@ -409,16 +410,25 @@ class Realtime extends React.Component {
   }
 }
 
-
+const items = [
+  { name: 'home', label: 'Home'},
+  { name: 'logs', label: 'Historical Logs'},
+  { name: 'users', label: 'Current Users'},
+  { name: 'report', label: 'Reports'},
+  { name: 'help', label: 'Help'}
+]
 //<Realtime /> <Baselines />
 
 function App() {
   return (
     <div className="App">
           <header className="App-header">
-              <Realtime />  
+              <Realtime />
               <Baselines />
       </header>
+      <header className="sidebar">
+        <Sidebar items={items} />
+        </header>
     </div>
   );
 }
