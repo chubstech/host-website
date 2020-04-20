@@ -18,16 +18,18 @@
   //min-width: 50vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; this centers the thing which is nice but it gives too much border */
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: black;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
+
 }
 
 .App-link {
   color: #61dafb;
 }
+
 
 @keyframes App-logo-spin {
   from {
