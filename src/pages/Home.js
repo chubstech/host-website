@@ -6,7 +6,7 @@ import Baselines from '../components/Baselines';
 const Home = () => {
     return (
        <div>
-        <h1>Noise Manager WebApp</h1>
+        <h1 class="no-print">Noise Manager WebApp</h1>
           <p>Home page content</p>
           <div className="App-header">
               <Realtime />
