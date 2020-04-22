@@ -3,17 +3,11 @@ import './App.css';
 import {
   BrowserRouter,
   Route
-  // Switch,
-  // Link,
-  // Redirect,
-  // NavLink
 } from 'react-router-dom';
 
 
 //Pages
 import Home from './pages/Home.js';
-import Logs from './pages/Logs';
-import Users from './pages/Users';
 import Report from './pages/Report';
 import Help from './pages/Help';
 
@@ -26,8 +20,6 @@ class App extends Component {
       <BrowserRouter>
         {/*All routes go here!*/}
         <Route exact path="/" component={Home} />
-        <Route exact path="/logs" component={Logs} />
-        <Route exact path="/users" component={Users} />
         <Route exact path="/report" component={Report} />
         <Route exact path="/help" component={Help} />
 
