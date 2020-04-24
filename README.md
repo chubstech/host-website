@@ -1,3 +1,20 @@
+Chubstech/host-website last updated on 4/24/2020.
+
+## How to clone and push this GitHub Pages site on your local computer
+1.	Make sure the latest version of Node.JS and is installed on your computer. This will allow you to use the 'npm' commands.
+2. Clone 'chubstech/host-website' onto your computer
+   Input this command into your terminal: 'git clone https://github.com/chubstech/host-website.git'
+
+3. Make any changes necessary to your new 'host-website' file on your local computer.
+4. When ready to push changes, enter directory using 'cd host-website' then use:
+    a. 'git status' to check all changes made to the 'host-website' file
+    b. 'git add .' to add all these changes to your commit
+    c. 'git commit -m "Your comment here"' to stage commit
+    d. 'git push origin master' to push to the master branch
+
+More information on running and deploying a React App to GitHub Pages for the first time can be read here: https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
