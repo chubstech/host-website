@@ -7,7 +7,7 @@ const Home = () => {
     return (
        <div>
         <h1 class="no-print">Noise Manager WebApp</h1>
-          <p>yikes testing in production</p>
+          <p>Real time data of each section/device</p>
           <div className="App-header">
               <Realtime />
               <Baselines />
