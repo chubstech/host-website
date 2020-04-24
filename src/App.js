@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         {/*All routes go here!*/}
-        <Route exact path="/" component={Home} />
+        <Route exact path="/host-website" component={Home} />
         <Route exact path="/report" component={Report} />
         <Route exact path="/help" component={Help} />
 
