@@ -7,10 +7,10 @@ Chubstech/host-website last updated on 4/24/2020.
 
 3. Make any changes necessary to your new 'host-website' file on your local computer.
 4. When ready to push changes, enter directory using 'cd host-website' then use:
-a. 'git status' to check all changes made to the 'host-website' file
-b. 'git add .' to add all these changes to your commit
-c. 'git commit -m "Your comment here"' to stage commit
-d. 'git push origin master' to push to the master branch
+- 'git status' to check all changes made to the 'host-website' file
+- 'git add .' to add all these changes to your commit
+- 'git commit -m "Your comment here"' to stage commit
+- 'git push origin master' to push to the master branch
 
 More information on running and deploying a React App to GitHub Pages for the first time can be read here: https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f
 
