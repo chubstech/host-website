@@ -3,10 +3,11 @@ Chubstech/host-website last updated on 4/24/2020.
 ## How to clone and push changes for this GitHub Pages site on your local computer
 1.	Make sure the latest version of Node.JS and is installed on your computer. This will allow you to use the 'npm' commands.
 2. Clone 'chubstech/host-website' onto your computer by inputting this command into your terminal: 'git clone https://github.com/chubstech/host-website.git'
-- run 'npm install' to install all dependencies
+3. Run 'npm install' to install all dependencies
 
-3. Make any changes necessary to your new 'host-website' file on your local computer.
-4. When ready to push changes, enter directory using 'cd host-website' then use:
+4. Make any changes necessary to your new 'host-website' file on your local computer.
+5. When ready to push changes, enter directory using 'cd host-website' then use:
+- 'npm run deploy' to deploy changes to GitHub Pages (must be done before the git commands below)
 - 'git status' to check all changes made to the 'host-website' file
 - 'git add .' to add all these changes to your commit
 - 'git commit -m "Your comment here"' to stage commit
