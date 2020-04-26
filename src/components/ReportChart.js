@@ -9,7 +9,7 @@ import {
     Baseline,
     Resizable
   } from "react-timeseries-charts";
-  
+
 
   const data = require("./usd_vs_euro.json");
   const points = data.widget[0].data.reverse();
@@ -18,14 +18,14 @@ import {
       columns: ["time", "value"],
       points
   });
-  
+
   const style = {
       value: {
           stroke: "#a02c2c",
           opacity: 0.2
       }
   };
-  
+
   const baselineStyle = {
       line: {
           stroke: "steelblue",
@@ -37,7 +37,7 @@ import {
           fill: "steelblue"
       }
   };
-  
+
   const baselineStyleLite = {
       line: {
           stroke: "steelblue",
@@ -48,7 +48,7 @@ import {
           fill: "steelblue"
       }
   };
-  
+
   const baselineStyleExtraLite = {
       line: {
           stroke: "steelblue",
@@ -60,17 +60,17 @@ import {
           fill: "steelblue"
       }
   };
-  
+
   class ReportChart extends React.Component {
       state = {
           tracker: null,
           timerange: series.range()
       };
-  
+
       handleTrackerChanged = tracker => {
           this.setState({ tracker });
       };
-  
+
       handleTimeRangeChange = timerange => {
           this.setState({ timerange });
       };
@@ -78,11 +78,11 @@ import {
 
 
 
-  
+
       render() {
           return (
 
-                
+
 
               <Resizable>
                   <ChartContainer
@@ -146,5 +146,5 @@ import {
 
 
 
-  
+
   export default ReportChart;

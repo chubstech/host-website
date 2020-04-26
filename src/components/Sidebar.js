@@ -1,16 +1,17 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React from 'react';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
 function Sidebar() {
   return (
-    <div className="sidebar no-print">
-      <h2>Innovation Lab</h2>
-      <ul>
-        <li><NavLink to="/host-website">Home</NavLink></li>
-        <li><NavLink to="/report">Report</NavLink></li>
-        <li><NavLink to="/help">Help</NavLink></li>
-        </ul>
-    </div>
+    <Navbar bg="light" variant="light">
+      <Navbar.Brand href="/">Innovation Labs</Navbar.Brand>
+      <Nav className="mr-auto">
+          <Nav.Link href="/">Home</Nav.Link>
+          <Nav.Link eventKey="report" href="/report">Report</Nav.Link>
+          <Nav.Link eventKey="help" href="/help">Help</Nav.Link>
+      </Nav>
+  </Navbar>
   )
 }
 

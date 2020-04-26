@@ -6,16 +6,15 @@ import FrankLineGraph from '../components/FranksChart'
 
 const Home = () => {
     return (
-       <div>
-        <h1 class="no-print">Noise Manager WebApp</h1>
-          <p>Real time data of each section/device</p>
-          <div className="App-header">
-              <FrankLineGraph />
-              <br/>
-              <Realtime />
-              <Baselines />
-            </div>
-       </div>
+      <div>
+        <h1>Noise Manager WebApp</h1>
+        <p>Real time data of each section/device</p>
+        
+        <FrankLineGraph />
+        <br/>
+        <Realtime />
+        <Baselines />
+      </div>
     );
 
 }

@@ -13,6 +13,8 @@ Chubstech/host-website last updated on 4/24/2020.
 - 'git commit -m "Your comment here"' to stage commit
 - 'git push origin master' to push to the master branch
 
+6. Access the website at https://chubstech.github.io/host-website
+
 More information on running and deploying a React App to GitHub Pages for the first time can be read here: https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f
 
 
