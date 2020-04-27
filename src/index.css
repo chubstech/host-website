@@ -44,7 +44,7 @@ td, th {
 }
     
 .no-print {
-    float: right;
+    text-align: right;
 }
 
 
