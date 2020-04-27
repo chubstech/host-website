@@ -19,15 +19,6 @@ import LineChart from './LineChart'
 const test_data = require('./../test_data.json');
 
 
-
-// function getObsTime() {
-//    var myDate = new Date( timeobs *100);
-
-
-// }
-
-
-
 function buildPoints() {
 
     let result = [];
