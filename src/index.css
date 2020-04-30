@@ -1,3 +1,7 @@
+@media only print {
+    .no-print { display: none;}
+}
+
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
@@ -35,6 +39,9 @@ td, th {
     background-color: #c7ffff;
 } */
 
+.print-btn {
+  float: right;
+}
 
 
 #table-header {
@@ -42,41 +49,6 @@ td, th {
     text-align: center;
 
 }
-    
-.no-print {
-    text-align: right;
-}
-
-
-.sidebar {
-  height: 100%;
-  width: 200px; 
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
-  left: 0;
-  background-color: #c9c7c7;
-  overflow-x: hidden; /* Disable horizontal scroll */
-}
-.sidebar h2{
-    padding-left: 50px;
-    padding-bottom: 75px;
-    font-weight: 500;
-}
-
-.sidebar li {
-    list-style-type: none;
-    padding-bottom: 40px;
-    padding-left: 10px;
-}
-
-
-
-.sidebar a {
-    color: #000000;
-    text-decoration: none;
-}
-
 
 .yaxislabel {
     font-size: 11pt;
