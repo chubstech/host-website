@@ -8,6 +8,7 @@ import Nav from 'react-bootstrap/Nav';
 
 import {
   BrowserRouter,
+  HashRouter,
   Route,
   Link,
   NavLink,
@@ -25,7 +26,7 @@ class App extends Component {
   render() {
     return (
       <Container>
-        <BrowserRouter>
+        <HashRouter basename='/'>
               <Navbar bg="dark" variant="dark" expand="sm" >
                 <Navbar.Brand as={Link} to="/">React Demo App</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
@@ -44,7 +45,7 @@ class App extends Component {
                 <Route exact path='/help' component={Help}/>
                 <Redirect from="/" to="/host-website"/>
               </Switch>
-          </BrowserRouter>
+          </HashRouter>
       </Container>
     );
   }
