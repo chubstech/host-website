@@ -27,7 +27,7 @@ class App extends Component {
     return (
       <Container>
         <HashRouter basename='/'>
-              <Navbar bg="dark" variant="dark" expand="sm" > 
+              <Navbar bg="dark" variant="dark" expand="sm" >
                 <Navbar.Brand as={Link} to="/">React Demo App</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">

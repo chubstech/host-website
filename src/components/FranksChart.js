@@ -8,7 +8,7 @@ export default class FrankLineGraph extends Component {
 
     componentDidMount() {
         const myChartRef = this.chartRef.current.getContext("2d");
-				var jsonfile = require('../test_data.json');
+				var jsonfile = require('../test-data-files/Debug.json');
 				var dict = new Object();
 				var labels = jsonfile.map(function(e) {
 					dict[e.time_obs] = e.db_reading;
