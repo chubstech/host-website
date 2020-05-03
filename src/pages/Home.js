@@ -10,8 +10,9 @@ const Home = () => {
       <div>
         <h1>Noise Manager WebApp</h1>
         <p>Real time data of each section/device</p>
-
-        <IoTChart />
+            <div id="chartContainer">
+                <IoTChart />
+            </div>
       </div>
     );
 

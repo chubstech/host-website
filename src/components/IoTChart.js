@@ -20,8 +20,9 @@ export default class IoTChart extends Component {
 					// Get minutes part from the timestamp
 					var minutes = dateObj.getUTCMinutes();
 					// Get seconds part from the timestamp
-					var seconds = dateObj.getUTCSeconds();
-					var formattedTime = hours.toString().padStart(2, '0') + ':' +
+                    var seconds = dateObj.getUTCSeconds();
+                    //dateObj.toDateString() + " " + 
+                    var formattedTime = hours.toString().padStart(2, '0') + ':' +
                 minutes.toString().padStart(2, '0') + ':' +
                 seconds.toString().padStart(2, '0');
 				  return formattedTime
@@ -32,8 +33,14 @@ export default class IoTChart extends Component {
         var canvas = document.createElement('canvas'),
         chartId = 'chart' + i;
         canvas.id = chartId;
-        document.write("<h1>"+item+"</h1>");
-        document.body.appendChild(canvas);
+        //document.querySelector("#chartContainer").innerHTML = "I am writing to chartContainer!"; //test
+        var heading1 = document.createElement("H2"); //creates heading2 tag
+        var chartLabel = document.createTextNode(item); //creates label text
+        heading1.appendChild(chartLabel);//appends heading2 to the text
+        document.querySelector("#chartContainer").appendChild(heading1); //appends label to chartContainer div
+        document.querySelector("#chartContainer").appendChild(canvas);// appends chart to chartCOntainer div
+        //document.body.appendChild(canvas) //old code
+
         var context = document.getElementById(chartId).getContext('2d');
         window[chartId] = new Chart(context, {
         type: 'line',
