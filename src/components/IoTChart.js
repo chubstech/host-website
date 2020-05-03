@@ -32,6 +32,7 @@ export default class IoTChart extends Component {
         var canvas = document.createElement('canvas'),
         chartId = 'chart' + i;
         canvas.id = chartId;
+        document.write("<h1>"+item+"</h1>");
         document.body.appendChild(canvas);
         var context = document.getElementById(chartId).getContext('2d');
         window[chartId] = new Chart(context, {
