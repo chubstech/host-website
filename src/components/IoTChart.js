@@ -33,7 +33,6 @@ export default class IoTChart extends Component {
         var canvas = document.createElement('canvas'),
         chartId = 'chart' + i;
         canvas.id = chartId;
-        //document.querySelector("#chartContainer").innerHTML = "I am writing to chartContainer!"; //test
         var heading1 = document.createElement("H2"); //creates heading2 tag
         var chartLabel = document.createTextNode(item); //creates label text
         heading1.appendChild(chartLabel);//appends heading2 to the text
