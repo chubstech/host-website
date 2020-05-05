@@ -19,8 +19,8 @@ class ReportTable extends React.Component {
       const listItems = table.map((rows) =>
         <tr>
         <td>{rows[0]}</td>
-        <td>{rows[1]}</td>
-        <td>{rows[2]}</td>
+        <td>{rows[1]} dB</td>
+        <td>{rows[2]} dB</td>
         </tr>);
 
         return (
