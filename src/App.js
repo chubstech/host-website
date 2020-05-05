@@ -7,7 +7,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 
 import {
-  BrowserRouter,
   HashRouter,
   Route,
   Link,

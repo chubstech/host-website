@@ -1,8 +1,5 @@
 import React from 'react';
 import '../App.css';
-import Realtime from '../components/Realtime';
-import Baselines from '../components/Baselines';
-import FrankLineGraph from '../components/FranksChart'
 import IoTChart from '../components/IoTChart.js'
 
 const Home = () => {
