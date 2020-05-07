@@ -21,6 +21,8 @@ const Report = () => {
           <p>Report for: { curr.getMonth()+1 }/{ curr.getDate() }/{ curr.getFullYear() }</p>
 
           <ReportChart/>
+          <br></br>
+          <br></br>
           <ReportTable/>
        </div>
     );

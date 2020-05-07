@@ -23,7 +23,7 @@ table {
     border: 1px solid black;
 }
 
-td, th {
+th, td {
     border: 1px solid #FFFFFF;
     text-align: center;
     padding: 8px;
@@ -31,9 +31,9 @@ td, th {
 
 }
 
-/* tr:nth-child(even) {
-    background-color: #c7ffff;
-} */
+tr:nth-child(odd) {
+    background-color: #dddddd;
+}
 
 .print-btn {
   float: right;
@@ -41,8 +41,9 @@ td, th {
 
 
 #table-header {
-    background-color: lightgray;
+    background-color: #17a2b8;
     text-align: center;
+    color: white;
 
 }
 

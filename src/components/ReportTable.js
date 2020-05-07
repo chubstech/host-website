@@ -28,9 +28,9 @@ class ReportTable extends React.Component {
                 <h3>Daily Summary Table</h3>
                 <table>
                   <tr>
-                   <th>Device Location</th>
-                   <th>Average dB</th>
-                   <th>Peak dB</th>
+                   <th id="table-header">Section Name</th>
+                   <th id="table-header">Average dB</th>
+                   <th id="table-header">Peak dB</th>
                   </tr>
                   {listItems}
                 </table>
