@@ -12,7 +12,7 @@ const Report = () => {
    }
     return (
        <div>
-        <div class="no-print print-btn">
+        <div className="no-print print-btn">
           <Button variant="info" size="lg" onClick={printPage}>Print report</Button>
         </div>
 
