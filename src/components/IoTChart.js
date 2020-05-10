@@ -20,7 +20,7 @@ function getCurrentDate()
 {
   var toBuild;
   var date = new Date();
-  toBuild = new Date(date.getFullYear(), date.getMonth(), date.getDate()-1, date.getHours()-2, date.getMinutes(), date.getSeconds(), date.getMilliseconds());
+  toBuild = new Date(date.getFullYear(), date.getMonth(), date.getDate()-1, date.getHours()-4, date.getMinutes(), date.getSeconds(), date.getMilliseconds());
   return toBuild;
 }
 
@@ -61,7 +61,7 @@ export default class IoTChart extends Component {
                 var json = JSON.stringify(info);
                 json = JSON.parse(json);
                 var current = getCurrentDate();
-                var dict = new Object();
+
                 var filteredJson = json.filter(function(e){
                   var tempTimeStampDate = new Date(e.time_obs * 1000);
                   if(tempTimeStampDate >= current){
@@ -69,19 +69,17 @@ export default class IoTChart extends Component {
                     }
                   }
                 );
+                console.log(filteredJson);
                 var dict = new Object();
                 var labels = filteredJson.map(function(e)
                 {
-                  var timeStampDate = new Date(e.time_obs * 1000);
-                  var nice = makeNiceTime(timeStampDate)
-                  getLoudestOne(nice, e.db_reading, dict);
-                  return Object.keys(dict)[0];
+                  getLoudestOne(e.time_obs, e.db_reading, dict);
+                  var timeStampDate = new Date(Object.keys(dict)[0] * 1000);
+                  return makeNiceTime(timeStampDate);
                 });
                 data = filteredJson.map(function(e)
                 {
-                  var timeStampDate = new Date(e.time_obs * 1000);
-                  var nice = makeNiceTime(timeStampDate)
-                  return dict[nice];
+                  return dict[e.time_obs];
                 });
                 var canvas = document.createElement('canvas'),
                 chartId = 'chart' + i;
