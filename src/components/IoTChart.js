@@ -16,26 +16,36 @@ function makeAPIRequest(userType) {
         });
 }
 
+function makeAPIRequestUsers() {
+    return fetch('https://cors-anywhere.herokuapp.com/https://noise-wearable.herokuapp.com/api/users')
+        .then((response) => {
+            return response.json();
+        })
+        .then(json => {
+            var jsonTest = json;
+            return jsonTest;
+        });
+}
+
 function getCurrentDate()
 {
   var toBuild;
-  var date = new Date();
-  toBuild = new Date(date.getFullYear(), date.getMonth(), date.getDate()-1, date.getHours()-4, date.getMinutes(), date.getSeconds(), date.getMilliseconds());
+    var date = new Date();
+    //date.getDate()-2 accounts for time changing 
+  toBuild = new Date(date.getFullYear(), date.getMonth(), date.getDate()-2, date.getHours()-4, date.getMinutes(), date.getSeconds(), date.getMilliseconds());
   return toBuild;
 }
 
-function getLoudestOne(time, loudness, storage)
+function getLoudestOne(time, loudness, unixStorage)
 {
-  if(time in storage)
-  {
-    if(storage[time] < loudness)
-    {
-      storage[time] = loudness
+    if(time in unixStorage){
+        if (unixStorage[time] < loudness) {
+            unixStorage[time] = loudness
+        }
     }
-  }
-  else {
-      storage[time] = loudness
-  }
+    else {
+        unixStorage[time] = loudness
+    }
 }
 
 function makeNiceTime(dateObj)
@@ -55,60 +65,94 @@ function makeNiceTime(dateObj)
 
 export default class IoTChart extends Component {
     componentDidMount() {
-        var jsonfiles = require('../test-data-files/users.json');//iterates through list of user
-        jsonfiles.forEach((item, i) => {
-            var promiseA = makeAPIRequest(item).then(info => {
-                var json = JSON.stringify(info);
-                json = JSON.parse(json);
-                var current = getCurrentDate();
+        //var promiseA = makeAPIRequestUsers().then(devices => { //uncomment once we are ready to use api to call for user list
+            var jsonFiles = require('../test-data-files/users.json');//iterates through list of user
+            //var jsonUsers = JSON.stringify(devices); //uncomment once we are ready to use api to call for user list
+            //jsonUsers = JSON.parse(jsonUsers); //uncomment once we are ready to use api to call for user list
+            //console.log(jsonUsers); //uncomment once we are ready to use api to call for user list
+            var count = 0;
+            //jsonUsers.map(function (e) { //uncomment once we are ready to use api to call for user list
+                //console.log(e.user_id);
+                //if (e.user_id != "Esp32" && e.user_id != "Esp 32b") { //uncomment once we are ready to use api to call for user list
+                    jsonFiles.forEach((item, i) => { //comment once we are ready to use api to call for user list
+                        //var promiseB = makeAPIRequest(e.user_id).then(info => { //uncomment once we are ready to use api to call for user list
+                            var promiseB = makeAPIRequest(item).then(info => {
+                                var json = JSON.stringify(info);
+                                json = JSON.parse(json);
+                                var current = getCurrentDate();
+                                var filteredJson = json.filter(function (e) {
+                                    var tempTimeStampDate = new Date(e.time_obs * 1000);
+                                    if (tempTimeStampDate >= current) {
+                                        return e.time_obs;
+                                    }
+                                }
+                                );
+                                console.log(filteredJson);
+                                var unixDict = new Object();
+                                var timeDict = new Object();
+                                var dict = new Object();
+                                var labels = filteredJson.map(function (e) {
+                                    getLoudestOne(e.time_obs, e.db_reading, dict);
+                                    var timeStampDate = new Date(Object.keys(dict)[0] * 1000);
+                                    return makeNiceTime(timeStampDate);
+                                });
+                                console.log(timeDict);
+                                data = filteredJson.map(function (e) { 
+                                    return dict[e.time_obs];
+                                });
+                                var canvas = document.createElement('canvas'),
+                                    chartId = 'chart' + i;
+                                //count++; //uncomment once we are ready to call api for user list
+                                canvas.id = chartId;
+                                var heading1 = document.createElement("H2"); //creates heading2 tag
+                                //var chartLabel = document.createTextNode(e.user_id); //creates label text //uncomment once we are ready to call api for user list
+                                var chartLabel = document.createTextNode(item); //creates label text //comment once we are ready to call api for user list
+                                heading1.appendChild(chartLabel);//appends heading2 to the text
+                                document.querySelector("#chartContainer").appendChild(heading1); //appends label to chartContainer div
+                                document.querySelector("#chartContainer").appendChild(canvas);// appends chart to chartCOntainer div
+                                //document.body.appendChild(canvas) //old code
 
-                var filteredJson = json.filter(function(e){
-                  var tempTimeStampDate = new Date(e.time_obs * 1000);
-                  if(tempTimeStampDate >= current){
-                    return e.time_obs
-                    }
-                  }
-                );
-                console.log(filteredJson);
-                var dict = new Object();
-                var labels = filteredJson.map(function(e)
-                {
-                  getLoudestOne(e.time_obs, e.db_reading, dict);
-                  var timeStampDate = new Date(Object.keys(dict)[0] * 1000);
-                  return makeNiceTime(timeStampDate);
-                });
-                data = filteredJson.map(function(e)
-                {
-                  return dict[e.time_obs];
-                });
-                var canvas = document.createElement('canvas'),
-                chartId = 'chart' + i;
-                canvas.id = chartId;
-                var heading1 = document.createElement("H2"); //creates heading2 tag
-                var chartLabel = document.createTextNode(item); //creates label text
-                heading1.appendChild(chartLabel);//appends heading2 to the text
-                document.querySelector("#chartContainer").appendChild(heading1); //appends label to chartContainer div
-                document.querySelector("#chartContainer").appendChild(canvas);// appends chart to chartCOntainer div
-                //document.body.appendChild(canvas) //old code
+                                var context = document.getElementById(chartId).getContext('2d');
+                                window[chartId] = new Chart(context, {
+                                    type: 'line',
+                                    data: {
+                                        //Bring in data
+                                        labels: labels,
+                                        datasets: [
+                                            {
+                                                label: "DB Levels",
+                                                data: data,
+                                            }
+                                        ]
+                                    },
+                                    options: {
+                                        title: {
+                                            display: true,
+                                            text: item //comment once we are ready to use api to call for user list
+                                            //text: e.user_id //uncomment once we are ready to use api to call for user list
+                                        },
+                                        scales: {
+                                            xAxes: [{
+                                                ticks: {
+                                                    maxTicksLimit: 20
+                                                }
+                                            }],
+                                            yAxes: [{
+                                                ticks: {
+                                                    beginAtZero: true
+                                                }
+                                            }]
+                                        }
+                                    }
+                                });
 
-                var context = document.getElementById(chartId).getContext('2d');
-                window[chartId] = new Chart(context, {
-                type: 'line',
-                    data: {
-                        //Bring in data
-                        labels: labels,
-                        datasets: [
-                            {
-                                label: "DB Levels",
-                                data: data,
-                            }
-                        ]
-                    }
-                });
-
-            });
-
-        });
+                            });
+                        //}); //uncomment once we are ready to use api to call for user list
+                    }); //comment once we are ready to use api to call for user list
+                //} //uncomment once we are ready to use api to call for user list
+            //}); //uncomment once we are ready to use api to call for user list
+        //}); //uncomment once we are ready to use api to call for user list
+        
     }
   render() {
       return (

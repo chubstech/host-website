@@ -1,0 +1,1287 @@
+[
+  {
+    "time_obs": 1588974394,
+    "user_id": "Esp32",
+    "db_reading": 61
+  },
+  {
+    "time_obs": 1588974393,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974393,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974392,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974392,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974391,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974391,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974390,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974390,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974389,
+    "user_id": "Esp32",
+    "db_reading": 61
+  },
+  {
+    "time_obs": 1588974389,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974388,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974388,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974387,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974387,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974386,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974386,
+    "user_id": "Esp32",
+    "db_reading": 61
+  },
+  {
+    "time_obs": 1588974385,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974385,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974384,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974384,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974383,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974383,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974382,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974382,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974381,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974381,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974380,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974380,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974379,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974379,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974379,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974374,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974374,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974373,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974373,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974372,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974372,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974371,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974371,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974370,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974370,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974369,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974369,
+    "user_id": "Esp32",
+    "db_reading": 67
+  },
+  {
+    "time_obs": 1588974368,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974368,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974367,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974367,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974367,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974366,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974366,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974365,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974365,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974364,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974364,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974363,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974363,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974362,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974362,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974361,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974361,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974360,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974360,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974360,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974355,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974354,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974354,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974353,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974353,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974352,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974352,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974351,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974351,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974350,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974350,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974349,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974349,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974348,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974348,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974347,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974347,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974346,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974346,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974345,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974345,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974344,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974344,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974343,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974343,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974342,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974342,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974341,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974341,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974340,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974340,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974340,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974336,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974335,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974335,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974334,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974334,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974333,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974333,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974332,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974332,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974331,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974331,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974330,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974330,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974329,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974329,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974328,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974328,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974327,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974327,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974326,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974326,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974325,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974325,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974324,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974324,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974323,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974323,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974322,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974322,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974321,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974321,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974321,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974316,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974316,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974315,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974315,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974314,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974314,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974313,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974313,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974312,
+    "user_id": "Esp32",
+    "db_reading": 68
+  },
+  {
+    "time_obs": 1588974312,
+    "user_id": "Esp32",
+    "db_reading": 66
+  },
+  {
+    "time_obs": 1588974311,
+    "user_id": "Esp32",
+    "db_reading": 67
+  },
+  {
+    "time_obs": 1588974311,
+    "user_id": "Esp32",
+    "db_reading": 67
+  },
+  {
+    "time_obs": 1588974310,
+    "user_id": "Esp32",
+    "db_reading": 65
+  },
+  {
+    "time_obs": 1588974310,
+    "user_id": "Esp32",
+    "db_reading": 65
+  },
+  {
+    "time_obs": 1588974309,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974309,
+    "user_id": "Esp32",
+    "db_reading": 66
+  },
+  {
+    "time_obs": 1588974308,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974308,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974307,
+    "user_id": "Esp32",
+    "db_reading": 67
+  },
+  {
+    "time_obs": 1588974307,
+    "user_id": "Esp32",
+    "db_reading": 65
+  },
+  {
+    "time_obs": 1588974307,
+    "user_id": "Esp32",
+    "db_reading": 65
+  },
+  {
+    "time_obs": 1588974306,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974306,
+    "user_id": "Esp32",
+    "db_reading": 66
+  },
+  {
+    "time_obs": 1588974305,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974305,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974304,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974304,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974303,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974303,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974302,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974302,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974302,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974297,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974296,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974296,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974295,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974295,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974294,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974294,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974293,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974293,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974292,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974292,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974291,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974291,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974290,
+    "user_id": "Esp32",
+    "db_reading": 66
+  },
+  {
+    "time_obs": 1588974290,
+    "user_id": "Esp32",
+    "db_reading": 65
+  },
+  {
+    "time_obs": 1588974289,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974289,
+    "user_id": "Esp32",
+    "db_reading": 70
+  },
+  {
+    "time_obs": 1588974288,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974288,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974287,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974287,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974286,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974286,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974285,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974285,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974284,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974284,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974283,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974283,
+    "user_id": "Esp32",
+    "db_reading": 61
+  },
+  {
+    "time_obs": 1588974282,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974282,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974282,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974278,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974277,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974277,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974276,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974276,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974275,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974275,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974274,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974274,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974273,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974273,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974272,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974272,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974271,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974271,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974270,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974270,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974269,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974269,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974268,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974268,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974267,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974267,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974266,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974266,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974265,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974265,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974264,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974264,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974263,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974263,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974263,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974255,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974254,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974254,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974253,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974253,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974252,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974252,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974251,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974251,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974250,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974250,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974249,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974249,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974248,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974248,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974247,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974247,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974247,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974245,
+    "user_id": "Esp32",
+    "db_reading": 65
+  },
+  {
+    "time_obs": 1588974245,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974244,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974244,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974243,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974243,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974242,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974242,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974241,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974241,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974240,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974240,
+    "user_id": "Esp32",
+    "db_reading": 64
+  },
+  {
+    "time_obs": 1588974240,
+    "user_id": "Esp32",
+    "db_reading": 62
+  },
+  {
+    "time_obs": 1588974240,
+    "user_id": "Esp32",
+    "db_reading": 63
+  },
+  {
+    "time_obs": 1588974235,
+    "user_id": "Esp32",
+    "db_reading": 62
+  }
+ ]
