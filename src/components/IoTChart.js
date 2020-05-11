@@ -128,7 +128,7 @@ export default class IoTChart extends Component {
                                     options: {
                                         title: {
                                             display: true,
-                                            text: item //comment once we are ready to use api to call for user list
+                                            //text: item //comment once we are ready to use api to call for user list
                                             //text: e.user_id //uncomment once we are ready to use api to call for user list
                                         },
                                         scales: {
