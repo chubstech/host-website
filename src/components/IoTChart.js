@@ -31,8 +31,8 @@ function getCurrentDate()
 {
   var toBuild;
     var date = new Date();
-    //date.getDate()-2 accounts for time changing 
-  toBuild = new Date(date.getFullYear(), date.getMonth(), date.getDate()-2, date.getHours()-4, date.getMinutes(), date.getSeconds(), date.getMilliseconds());
+    //date.getDate()-2 accounts for time changing
+  toBuild = new Date(date.getFullYear(), date.getMonth(), date.getDate()-3, date.getHours()-2, date.getMinutes(), date.getSeconds(), date.getMilliseconds());
   return toBuild;
 }
 
@@ -65,18 +65,17 @@ function makeNiceTime(dateObj)
 
 export default class IoTChart extends Component {
     componentDidMount() {
-        //var promiseA = makeAPIRequestUsers().then(devices => { //uncomment once we are ready to use api to call for user list
-            var jsonFiles = require('../test-data-files/users.json');//iterates through list of user
-            //var jsonUsers = JSON.stringify(devices); //uncomment once we are ready to use api to call for user list
-            //jsonUsers = JSON.parse(jsonUsers); //uncomment once we are ready to use api to call for user list
-            //console.log(jsonUsers); //uncomment once we are ready to use api to call for user list
+        var promiseA = makeAPIRequestUsers().then(devices => { //uncomment once we are ready to use api to call for user list
+            //var jsonFiles = require('../test-data-files/users.json');//iterates through list of user
+            var jsonUsers = JSON.stringify(devices); //uncomment once we are ready to use api to call for user list
+            jsonUsers = JSON.parse(jsonUsers); //uncomment once we are ready to use api to call for user list
+            console.log(jsonUsers); //uncomment once we are ready to use api to call for user list
             var count = 0;
-            //jsonUsers.map(function (e) { //uncomment once we are ready to use api to call for user list
-                //console.log(e.user_id);
-                //if (e.user_id != "Esp32" && e.user_id != "Esp 32b") { //uncomment once we are ready to use api to call for user list
-                    jsonFiles.forEach((item, i) => { //comment once we are ready to use api to call for user list
-                        //var promiseB = makeAPIRequest(e.user_id).then(info => { //uncomment once we are ready to use api to call for user list
-                            var promiseB = makeAPIRequest(item).then(info => {
+            jsonUsers.map(function (e) { //uncomment once we are ready to use api to call for user list
+            console.log(e.user_id);
+                                //jsonFiles.forEach((item, i) => { //comment once we are ready to use api to call for user list
+                        var promiseB = makeAPIRequest(e.user_id).then(info => { //uncomment once we are ready to use api to call for user list
+                          //  var promiseB = makeAPIRequest(info).then(info => {
                                 var json = JSON.stringify(info);
                                 json = JSON.parse(json);
                                 var current = getCurrentDate();
@@ -86,27 +85,20 @@ export default class IoTChart extends Component {
                                         return e.time_obs;
                                     }
                                 }
-                                );
+                              );
                                 console.log(filteredJson);
-                                var unixDict = new Object();
-                                var timeDict = new Object();
                                 var dict = new Object();
-                                var labels = filteredJson.map(function (e) {
-                                    getLoudestOne(e.time_obs, e.db_reading, dict);
-                                    var timeStampDate = new Date(Object.keys(dict)[0] * 1000);
-                                    return makeNiceTime(timeStampDate);
-                                });
-                                console.log(timeDict);
-                                data = filteredJson.map(function (e) { 
-                                    return dict[e.time_obs];
+                                filteredJson.map(function (e) {
+                                    var timeStampDate = new Date(e.time_obs * 1000);
+                                    var niceTime = makeNiceTime(timeStampDate);
+                                    getLoudestOne(niceTime, e.db_reading, dict);
                                 });
                                 var canvas = document.createElement('canvas'),
-                                    chartId = 'chart' + i;
-                                //count++; //uncomment once we are ready to call api for user list
+                                chartId = 'chart' + e.user_id;
                                 canvas.id = chartId;
                                 var heading1 = document.createElement("H2"); //creates heading2 tag
-                                //var chartLabel = document.createTextNode(e.user_id); //creates label text //uncomment once we are ready to call api for user list
-                                var chartLabel = document.createTextNode(item); //creates label text //comment once we are ready to call api for user list
+                                var chartLabel = document.createTextNode(e.user_id); //creates label text //uncomment once we are ready to call api for user list
+                                //var chartLabel = document.createTextNode(item); //creates label text //comment once we are ready to call api for user list
                                 heading1.appendChild(chartLabel);//appends heading2 to the text
                                 document.querySelector("#chartContainer").appendChild(heading1); //appends label to chartContainer div
                                 document.querySelector("#chartContainer").appendChild(canvas);// appends chart to chartCOntainer div
@@ -117,11 +109,11 @@ export default class IoTChart extends Component {
                                     type: 'line',
                                     data: {
                                         //Bring in data
-                                        labels: labels,
+                                        labels: Object.keys(dict),
                                         datasets: [
                                             {
                                                 label: "DB Levels",
-                                                data: data,
+                                                data: Object.values(dict),
                                             }
                                         ]
                                     },
@@ -129,7 +121,7 @@ export default class IoTChart extends Component {
                                         title: {
                                             display: true,
                                             //text: item //comment once we are ready to use api to call for user list
-                                            //text: e.user_id //uncomment once we are ready to use api to call for user list
+                                            text: e.user_id //uncomment once we are ready to use api to call for user list
                                         },
                                         scales: {
                                             xAxes: [{
@@ -146,13 +138,12 @@ export default class IoTChart extends Component {
                                     }
                                 });
 
-                            });
-                        //}); //uncomment once we are ready to use api to call for user list
-                    }); //comment once we are ready to use api to call for user list
-                //} //uncomment once we are ready to use api to call for user list
-            //}); //uncomment once we are ready to use api to call for user list
-        //}); //uncomment once we are ready to use api to call for user list
-        
+                            //});
+                        }); //uncomment once we are ready to use api to call for user list
+                    //}); //comment once we are ready to use api to call for user list
+            }); //uncomment once we are ready to use api to call for user list
+        }); //uncomment once we are ready to use api to call for user list
+
     }
   render() {
       return (
