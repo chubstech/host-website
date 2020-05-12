@@ -7,20 +7,30 @@ class ReportTable extends React.Component {
       var jsonfiles = require('../test-data-files/users.json');
       var table = [];
       jsonfiles.forEach((item, i) => {
-        var currentFile = require('../test-data-files/' + item + '.json')
-        var row = [];
-        var values = currentFile.map(function(o) {return o.db_reading;});
-        var peak = Math.max.apply(Math, values);
-        var avg = Math.round(values.reduce(function(a,b){return a+b;}, 0) / values.length);
+        var json = require('../test-data-files/' + item + '.json')
 
-        var peaktimes = [];
-        currentFile.forEach((item, i) => {
-          if (item.db_reading == peak) {
+
+        var row = [];
+        var peak = 0;
+        var avg = 0;
+        var peakdict = {};
+
+        json.forEach((item, i) => {
+          avg += item.db_reading;
+          if (item.db_reading > peak) {
+            peak = item.db_reading;
+          }
+
+          if (peakdict[item.db_reading]) {
             var time = new Date(item.time_obs * 1000);
-            peaktimes.push(time.toLocaleTimeString(), ", ");
+            peakdict[item.db_reading].push(time.toLocaleString());
+          }
+          else {
+            var time = new Date(item.time_obs * 1000);
+            peakdict[item.db_reading] = [time.toLocaleString()];
           }
         })
-        row.push(item, avg, peak, peaktimes);
+        row.push(item, Math.round(avg/json.length), peak, peakdict[peak]);
         table.push(row);
       })
 

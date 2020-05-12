@@ -18,7 +18,7 @@ const Report = () => {
 
           <h1>Your Noise Report Summary</h1>
           {/*JS Date() declared January the 0th month*/}
-          <p>Report for: { curr.getMonth()+1 }/{ curr.getDate() }/{ curr.getFullYear() }</p>
+          <p>Generated on <b>{ curr.toLocaleDateString() }</b></p>
 
           <ReportChart/>
           <br></br>
