@@ -1,5 +1,5 @@
 import React from 'react';
-import ReportTable from '../components/ReportTable';
+import ReportTable from '../components/ReportTableAPI';
 import ReportChart from '../components/ReportChart';
 import Button from 'react-bootstrap/Button';
 
@@ -17,7 +17,6 @@ const Report = () => {
         </div>
 
           <h1>Your Noise Report Summary</h1>
-          {/*JS Date() declared January the 0th month*/}
           <p>Generated on <b>{ curr.toLocaleDateString() }</b></p>
 
           <ReportChart/>

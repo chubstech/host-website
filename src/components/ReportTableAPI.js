@@ -23,21 +23,12 @@ function makeAPIRequestUsers() {
 }
 
 class ReportTable extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-      items: []
-    };
-  }
 
   componentDidMount() {
     var pastDay =  Math.round(Date.now() / 1000) - 86400;
-
+    // var pastDay =  1588974396 - 86400; //esp32 stopped sending data 5/8. uncomment to show something on table
     makeAPIRequestUsers()
       .then((users) => {
-        var table = [];
         var jsonUsers = JSON.stringify(users);
         jsonUsers = JSON.parse(jsonUsers);
         jsonUsers.map(function(e) {
@@ -60,44 +51,37 @@ class ReportTable extends React.Component {
                   peak = item.db_reading;
                 }
 
+                var time = new Date(item.time_obs * 1000);
                 if (peaktimes[item.db_reading]) {
-                  var time = new Date(item.time_obs * 1000);
                   peaktimes[item.db_reading].push(time.toLocaleString());
                 }
                 else {
-                  var time = new Date(item.time_obs * 1000);
                   peaktimes[item.db_reading] = [time.toLocaleString()];
                 }
               })
-              table.push({"user_id": e.user_id, "avg": Math.round(avg/data.length), "peak": peak, "times": peaktimes[peak]});
+              var d1 = document.getElementById('table');
+              d1.insertAdjacentHTML('beforeend', '<tr><td>'+e.user_id+'</td><td>'+ Math.round(avg/data.length)+'</td><td>'+ peak +'</td><td>'+ peaktimes[peak] +'</tr>');
             })
         })
-        console.log(table);
-        this.setState({
-          isLoaded: true,
-          items: table
-        });
       })
   }
 
     render() {
-      // TODO: display table onto page
-      const { error, isLoaded, items } = this.state;
-      if(error) {
-        return <div> Error: {error.message}</div>;
-      } else if (!isLoaded) {
-        return <div> Loading...</div>;
-      } else {
         return (
-          <ul>
-            {items.map(item => (
-              <li>
-                {item.user_id} {item.peak}
-              </li>
-            ))}
-          </ul>
+          <div>
+              <h3>Daily Summary Table</h3>
+              <table>
+              <tbody id="table">
+                <tr>
+                 <th id="table-header">Section Name</th>
+                 <th id="table-header">Average dB</th>
+                 <th id="table-header">Peak dB</th>
+                 <th id="table-header">Peak dB Time</th>
+                </tr>
+                </tbody>
+              </table>
+          </div>
         );
-    }
   }
 }
 export default ReportTable;
