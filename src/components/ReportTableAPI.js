@@ -25,8 +25,8 @@ function makeAPIRequestUsers() {
 class ReportTable extends React.Component {
 
   componentDidMount() {
-    var pastDay =  Math.round(Date.now() / 1000) - 86400;
-    // var pastDay =  1588974396 - 86400; //esp32 stopped sending data 5/8. uncomment to show something on table
+    // var pastDay =  Math.round(Date.now() / 1000) - 86400; //24 hours
+    var pastDay =  Math.round(Date.now() / 1000) - 43200; //12 hours
     makeAPIRequestUsers()
       .then((users) => {
         var jsonUsers = JSON.stringify(users);
