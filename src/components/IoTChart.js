@@ -27,15 +27,6 @@ function makeAPIRequestUsers() {
         });
 }
 
-function getCurrentDate()
-{
-  var toBuild;
-    var date = new Date();
-    //date.getDate()-2 accounts for time changing
-  toBuild = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours()-2, date.getMinutes(), date.getSeconds(), date.getMilliseconds());
-  return toBuild;
-}
-
 function getLoudestOne(time, loudness, unixStorage)
 {
     if(time in unixStorage){
@@ -78,10 +69,10 @@ export default class IoTChart extends Component {
                           //  var promiseB = makeAPIRequest(info).then(info => {
                                 var json = JSON.stringify(info);
                                 json = JSON.parse(json);
-                                var current = getCurrentDate();
+                                var today = Math.floor(new Date().getTime()/1000.0);
+                                var past = Math.round(today - 7200); //past 2 hours in epoch time
                                 var filteredJson = json.filter(function (e) {
-                                    var tempTimeStampDate = new Date(e.time_obs * 1000);
-                                    if (tempTimeStampDate >= current) {
+                                    if (e.time_obs >= past && e.time_obs < today) {
                                         return e.time_obs;
                                     }
                                 }
@@ -109,11 +100,11 @@ export default class IoTChart extends Component {
                                     type: 'line',
                                     data: {
                                         //Bring in data
-                                        labels: Object.keys(dict),
+                                        labels: Object.keys(dict).reverse(),
                                         datasets: [
                                             {
                                                 label: "DB Levels",
-                                                data: Object.values(dict),
+                                                data: Object.values(dict).reverse(),
                                             }
                                         ]
                                     },
