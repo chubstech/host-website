@@ -32,7 +32,7 @@ function getCurrentDate()
   var toBuild;
     var date = new Date();
     //date.getDate()-2 accounts for time changing
-  toBuild = new Date(date.getFullYear(), date.getMonth(), date.getDate()-3, date.getHours()-2, date.getMinutes(), date.getSeconds(), date.getMilliseconds());
+  toBuild = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours()-2, date.getMinutes(), date.getSeconds(), date.getMilliseconds());
   return toBuild;
 }
 
