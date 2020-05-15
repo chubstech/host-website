@@ -25,8 +25,9 @@ function makeAPIRequestUsers() {
 class ReportTable extends React.Component {
 
   componentDidMount() {
-    // var pastDay =  Math.round(Date.now() / 1000) - 86400; //24 hours
-    var pastDay =  Math.round(Date.now() / 1000) - 43200; //12 hours
+    var curr = Math.floor(Date.now() / 1000);
+    // var pastDay =  Math.round(curr - 43200); //12 hours
+    var pastDay =  Math.round(curr - 86400); //24 hours
     makeAPIRequestUsers()
       .then((users) => {
         var jsonUsers = JSON.stringify(users);
@@ -37,8 +38,10 @@ class ReportTable extends React.Component {
               var data = JSON.stringify(rawdata);
               data = JSON.parse(data);
               var filteredJson = data.filter(function (e) {
-                  return e.time_obs >= pastDay;
-                  }
+                if (e.time_obs >= pastDay && e.time_obs < curr) {
+                  return e.time_obs;
+                }
+              }
               );
 
               var peak = 0;
