@@ -4,7 +4,7 @@ var Component = React.Component;
 
 var data;
 function makeAPIRequest(userType) {
-    var baseAPIURL = 'https://noise-wearable.herokuapp.com/api/noise_observation/user/';
+    var baseAPIURL = 'https://cors-anywhere.herokuapp.com/https://noise-wearable.herokuapp.com/api/noise_observation/user/';
     baseAPIURL = baseAPIURL + userType;
     return fetch(baseAPIURL)
         .then((response) => {
@@ -17,7 +17,7 @@ function makeAPIRequest(userType) {
 }
 
 function makeAPIRequestUsers() {
-    return fetch('https://noise-wearable.herokuapp.com/api/users')
+    return fetch('https://cors-anywhere.herokuapp.com/https://noise-wearable.herokuapp.com/api/users')
         .then((response) => {
             return response.json();
         })
