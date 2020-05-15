@@ -22,7 +22,7 @@ const Report = () => {
           <ReportChart/>
           <br></br>
           <br></br>
-          <ReportTable/>
+          {/*<ReportTable/>*/}
        </div>
     );
 }

@@ -5,6 +5,10 @@ let color_count = 0;
 
 
 function getAvgHourlyData( json_data ) { //Gathers the db Levels of each hour from the json and finds avg db level per hr
+  var peak = 0;
+  var peaktimes = {};
+  let avg = 0;
+  let avgBase = 0;
 
     let result = [];
     let activeHour = 0;
@@ -28,26 +32,44 @@ function getAvgHourlyData( json_data ) { //Gathers the db Levels of each hour fr
             result.push( [Math.round(dbAvg / hourlyNumCount), activeHour ])
         }
         dbAvg+= json_data[i].db_reading;
+        if (json_data[i].db_reading >= peak) {
+          delete peaktimes[peak];
+          peak = json_data[i].db_reading;
+          if (peaktimes[json_data[i].db_reading]) {
+            peaktimes[json_data[i].db_reading].push(time.toLocaleString());
+          }
+          else {
+            peaktimes[json_data[i].db_reading] = [time.toLocaleString()];
+          }
+        }
         hourlyNumCount++;
-        
+
     }
     for( var s = 0; s < result.length; s++){ // Loops through the list to put it on the final list that is shown in the data
             let desiredIndex = result[s][1] ;
             final_result[ desiredIndex ] = result[s][0];
+            if (result[s][0] !== 0) {
+              avg += result[s][0];
+              avgBase++;
+            }
     }
-    return final_result;
+    return [final_result, Math.round(avg/avgBase), peak, peaktimes[peak]];
 
 }
 
 function createDataset( user_file, user ) { //Creates a dataset given the json file
 
     const colors = [ 'rgb(25, 129, 102)', 'rgba(171,185,255)', 'rgb(19, 72, 250)', 'rgb(174, 255, 171)', 'rgb(255, 205, 139)', 'rgb(252, 58, 113)', 'rgb(232, 222, 46)', 'rgb(178, 62, 207)', 'rgb(158, 56, 5)'];
+    var help = getAvgHourlyData( user_file )
     let result = {
         label: user,
         fill:false,
         backgroundColor: colors[color_count],
         borderColor: colors[color_count],
-        data: getAvgHourlyData( user_file ), 
+        data: help[0],
+        avg: help[1],
+        peak: help[2],
+        peaktimes: help[3]
     };
     color_count++;
     return result;
@@ -60,7 +82,7 @@ var chartOptions = {
     pointDot: true,
     title: {
         display: true,
-        text: 'Average Noise Levels (Hourly)',
+        text: 'Average Noise Levels in the Past 24 Hours (Hourly)',
         fontSize:20
     },
     scales: {
@@ -112,7 +134,7 @@ class ReportChart extends React.Component {
              {
                 labels: this.label,
                 datasets: []
-             }, 
+             },
              json_files: []
         };
 
@@ -120,28 +142,29 @@ class ReportChart extends React.Component {
 
     changeText = () => { //Changes text whenever the button is clicked -- going to add the functionality to switch graphs
         if ( this.state.text == 'Weekly Report' ) {
-            this.setState({ text: 'Daily Report' }); 
+            this.setState({ text: 'Daily Report' });
         } else {
-            this.setState({ text: 'Weekly Report' }); 
+            this.setState({ text: 'Weekly Report' });
 
         }
-      } 
+      }
 
 
-    
+
     componentDidMount() { //Sets the state of datasets from the json files that are present
 
         let dataset_list = [];
 
         var promiseA = makeAPIRequestUsers().then(devices => { // Makes API request to get current users list
             var jsonUsers = JSON.stringify(devices);
-            jsonUsers = JSON.parse(jsonUsers); 
+            jsonUsers = JSON.parse(jsonUsers);
             jsonUsers.forEach((item, i) => {
                 var api_data = makeAPIRequest(item.user_id).then(info => { //Loops through each user to create dataset and pushes it to the state
                     var json = JSON.stringify(info);
                     json = JSON.parse(json);
-                    var dataset = createDataset( json, json[0].user_id ); 
-                    dataset_list.push( dataset);   
+                    var dataset = createDataset( json, json[0].user_id );
+                                                              console.log(dataset);
+                    dataset_list.push( dataset);
                     if ( dataset_list.length == jsonUsers.length) {
                         this.setState({
                             chartData: {
@@ -150,28 +173,47 @@ class ReportChart extends React.Component {
                         });
                         return dataset_list;
                     }
-
                 });
         });
-    
+
+
     });
-    
+
 }
         render() {
             return (
+              <div>
                 <div className='lineChart'>
-                    <Line 
+                    <Line
                     ref={this.chartReference}
                     data={this.state.chartData}
                     options={chartOptions}
                     height={250}
                     width={600}
                     />
-
-                    <div class="btn btn-info">
-                    <Button id='reportbutton' variant="info" size="sm" 
-                    onClick={ () => { this.changeText()}  }>{this.state.text}</Button>
-                    </div>
+                </div>
+                <br></br><br></br>
+                <div>
+                    <h3>Daily Summary Table</h3>
+                    <table>
+                    <tbody>
+                      <tr>
+                       <th id="table-header">Section Name</th>
+                       <th id="table-header">Average dB</th>
+                       <th id="table-header">Peak dB</th>
+                       <th id="table-header">Peak dB Time</th>
+                      </tr>
+                      {this.state.chartData.datasets.map((item) =>
+                        <tr key={item.label}>
+                        <td>{item.label}</td>
+                        <td>{item.avg}</td>
+                        <td> {item.peak}</td>
+                        <td>{item.peaktimes}</td>
+                        </tr>
+                      )}
+                      </tbody>
+                    </table>
+                </div>
                 </div>
             );
         }

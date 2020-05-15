@@ -32,7 +32,7 @@ class ReportTable extends React.Component {
       .then((users) => {
         var jsonUsers = JSON.stringify(users);
         jsonUsers = JSON.parse(jsonUsers);
-        jsonUsers.map(function(e) {
+        jsonUsers.forEach(function(e) {
           makeAPIRequest(e.user_id)
             .then((rawdata) => {
               var data = JSON.stringify(rawdata);
@@ -50,18 +50,20 @@ class ReportTable extends React.Component {
 
               filteredJson.forEach((item, i) => {
                 avg += item.db_reading;
-                if (item.db_reading > peak) {
+                if (item.db_reading >= peak) {
+                  delete peaktimes[peak];
                   peak = item.db_reading;
-                }
-
-                var time = new Date(item.time_obs * 1000);
-                if (peaktimes[item.db_reading]) {
-                  peaktimes[item.db_reading].push(time.toLocaleString());
-                }
-                else {
-                  peaktimes[item.db_reading] = [time.toLocaleString()];
+                  var time = new Date(item.time_obs * 1000);
+                  if (peaktimes[item.db_reading]) {
+                    peaktimes[item.db_reading].push(time.toLocaleString());
+                  }
+                  else {
+                    peaktimes[item.db_reading] = [time.toLocaleString()];
+                  }
                 }
               })
+              console.log("peaktimes");
+              console.log(peaktimes);
               var d1 = document.getElementById('table');
               d1.insertAdjacentHTML('beforeend', '<tr><td>'+e.user_id+'</td><td>'+ Math.round(avg/data.length)+'</td><td>'+ peak +'</td><td>'+ peaktimes[peak] +'</tr>');
             })
