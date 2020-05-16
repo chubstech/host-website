@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css';
 import Chart from "chart.js";
 import IoTChart from '../components/IoTChart.js'
-import UpdateIoTChart from '../components/updateIoTChart.js'
+
 
 
 function makeAPIRequest(userType) {
