@@ -61,66 +61,78 @@ export default class IoTChart extends Component {
             jsonUsers = JSON.parse(jsonUsers);
             jsonUsers.map(function (e) {
             console.log(e.user_id);
-                  var promiseB = makeAPIRequest(e.user_id).then(info => {
-                          var json = JSON.stringify(info);
-                          json = JSON.parse(json);
-                          var today = Math.floor(new Date().getTime()/1000.0);
-                          var past = Math.round(today - 7200);
-                          var filteredJson = json.filter(function (e) {
-                              if (e.time_obs >= past && e.time_obs < today) {
-                                  return e.time_obs;
-                              }
-                          }
-                          );
-                          var dict = new Object();
-                          filteredJson.map(function (e) {
-                              var timeStampDate = new Date(e.time_obs * 1000);
-                              var niceTime = makeNiceTime(timeStampDate);
-                              getLoudestOne(niceTime, e.db_reading, dict);
-                          });
-                          var canvas = document.createElement('canvas'),
-                          chartId = 'chart' + e.user_id;
-                          canvas.id = chartId;
-                          var heading1 = document.createElement("H2");
-                          var chartLabel = document.createTextNode(e.user_id);
-                          heading1.appendChild(chartLabel);
-                          document.querySelector("#chartContainer").appendChild(heading1);
-                          document.querySelector("#chartContainer").appendChild(canvas);
+                var promiseB = makeAPIRequest(e.user_id).then(info => {
+                    var json = JSON.stringify(info);
+                    json = JSON.parse(json);
+                    var today = Math.floor(new Date().getTime()/1000.0);
+                    var past = Math.round(today - 7200);
+                    var filteredJson = json.filter(function (e) {
+                        if (e.time_obs >= past && e.time_obs < today) {
+                            return e.time_obs;
+                        }
+                    }
+                    );
+                    var dict = new Object();
+                    filteredJson.map(function (e) {
+                        var timeStampDate = new Date(e.time_obs * 1000);
+                        var niceTime = makeNiceTime(timeStampDate);
+                        getLoudestOne(niceTime, e.db_reading, dict);
+                    });
+                    var canvas = document.createElement('canvas'),
+                    chartId = 'chart' + e.user_id;
+                    canvas.id = chartId;
+                    var heading1 = document.createElement("H2");
+                    var chartLabel = document.createTextNode(e.user_id);
+                    //heading1.appendChild(chartLabel);
+                    //document.querySelector("#chartContainer").appendChild(heading1);
+                    document.querySelector("#chartContainer").appendChild(canvas);
 
-                          var context = document.getElementById(chartId).getContext('2d');
-                          window[chartId] = new Chart(context, {
-                              type: 'line',
-                              data: {
-                                  //Bring in data
-                                  labels: Object.keys(dict).reverse(),
-                                  datasets: [
-                                      {
-                                          label: "DB Levels",
-                                          data: Object.values(dict).reverse(),
-                                      }
-                                  ]
-                              },
-                              options: {
-                                  title: {
-                                      display: true,
-                                      text: e.user_id
-                                  },
-                                  scales: {
-                                      xAxes: [{
-                                          ticks: {
-                                              maxTicksLimit: 20
-                                          }
-                                      }],
-                                      yAxes: [{
-                                          ticks: {
-                                              beginAtZero: true
-                                          }
-                                      }]
-                                  }
-                              }
-                          });
-                      });
+                    var context = document.getElementById(chartId).getContext('2d');
+                    window[chartId] = new Chart(context, {
+                        type: 'line',
+                        data: {
+                            //Bring in data
+                            labels: Object.keys(dict).reverse(),
+                            datasets: [
+                                {
+                                    label: "DB Levels",
+                                    data: Object.values(dict).reverse(),
+                                    borderColor: 'rgb(147, 215, 245)',
+                                    fill: false,
+                                    pointBackgroundColor: 'rgb(135, 188, 200)'
+                                }
+                            ]
+                        },
+                        options: {
+                            title: {
+                                display: true,
+                                text: e.user_id,
+                                position: 'top',
+                                fontSize: 30,
+                                fontColor: '#000000'
+                            },
+                            layout: {
+                                padding: {
+                                    top: 20,
+                                    bottom: 20
+                                }
+                            },
+                            scales: {
+                                xAxes: [{
+                                    ticks: {
+                                        maxTicksLimit: 20
+                                    }
+                                }],
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
                 });
+            });
           });
 
     }
