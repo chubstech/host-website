@@ -2,7 +2,6 @@ import React from 'react'
 import Chart from "chart.js";
 var Component = React.Component;
 
-var data;
 function makeAPIRequest(userType) {
     var baseAPIURL = 'https://cors-anywhere.herokuapp.com/https://noise-wearable.herokuapp.com/api/noise_observation/user/';
     baseAPIURL = baseAPIURL + userType;
@@ -25,15 +24,6 @@ function makeAPIRequestUsers() {
             var jsonTest = json;
             return jsonTest;
         });
-}
-
-function getCurrentDate()
-{
-  var toBuild;
-    var date = new Date();
-    //date.getDate()-2 accounts for time changing
-  toBuild = new Date(date.getFullYear(), date.getMonth(), date.getDate()-3, date.getHours()-2, date.getMinutes(), date.getSeconds(), date.getMilliseconds());
-  return toBuild;
 }
 
 function getLoudestOne(time, loudness, unixStorage)
@@ -63,86 +53,87 @@ function makeNiceTime(dateObj)
 
 }
 
+
 export default class IoTChart extends Component {
     componentDidMount() {
-        var promiseA = makeAPIRequestUsers().then(devices => { //uncomment once we are ready to use api to call for user list
-            //var jsonFiles = require('../test-data-files/users.json');//iterates through list of user
-            var jsonUsers = JSON.stringify(devices); //uncomment once we are ready to use api to call for user list
-            jsonUsers = JSON.parse(jsonUsers); //uncomment once we are ready to use api to call for user list
-            console.log(jsonUsers); //uncomment once we are ready to use api to call for user list
-            var count = 0;
-            jsonUsers.map(function (e) { //uncomment once we are ready to use api to call for user list
+        var promiseA = makeAPIRequestUsers().then(devices => {
+            var jsonUsers = JSON.stringify(devices);
+            jsonUsers = JSON.parse(jsonUsers);
+            jsonUsers.map(function (e) {
             console.log(e.user_id);
-                                //jsonFiles.forEach((item, i) => { //comment once we are ready to use api to call for user list
-                        var promiseB = makeAPIRequest(e.user_id).then(info => { //uncomment once we are ready to use api to call for user list
-                          //  var promiseB = makeAPIRequest(info).then(info => {
-                                var json = JSON.stringify(info);
-                                json = JSON.parse(json);
-                                var current = getCurrentDate();
-                                var filteredJson = json.filter(function (e) {
-                                    var tempTimeStampDate = new Date(e.time_obs * 1000);
-                                    if (tempTimeStampDate >= current) {
-                                        return e.time_obs;
-                                    }
+                var promiseB = makeAPIRequest(e.user_id).then(info => {
+                    var json = JSON.stringify(info);
+                    json = JSON.parse(json);
+                    var today = Math.floor(new Date().getTime()/1000.0);
+                    var past = Math.round(today - 7200);
+                    var filteredJson = json.filter(function (e) {
+                        if (e.time_obs >= past && e.time_obs < today) {
+                            return e.time_obs;
+                        }
+                    }
+                    );
+                    var dict = new Object();
+                    filteredJson.map(function (e) {
+                        var timeStampDate = new Date(e.time_obs * 1000);
+                        var niceTime = makeNiceTime(timeStampDate);
+                        getLoudestOne(niceTime, e.db_reading, dict);
+                    });
+                    var canvas = document.createElement('canvas'),
+                    chartId = 'chart' + e.user_id;
+                    canvas.id = chartId;
+                    var heading1 = document.createElement("H2");
+                    var chartLabel = document.createTextNode(e.user_id);
+                    //heading1.appendChild(chartLabel);
+                    //document.querySelector("#chartContainer").appendChild(heading1);
+                    document.querySelector("#chartContainer").appendChild(canvas);
+
+                    var context = document.getElementById(chartId).getContext('2d');
+                    window[chartId] = new Chart(context, {
+                        type: 'line',
+                        data: {
+                            //Bring in data
+                            labels: Object.keys(dict).reverse(),
+                            datasets: [
+                                {
+                                    label: "DB Levels",
+                                    data: Object.values(dict).reverse(),
+                                    borderColor: 'rgb(147, 215, 245)',
+                                    fill: false,
+                                    pointBackgroundColor: 'rgb(135, 188, 200)'
                                 }
-                              );
-                                console.log(filteredJson);
-                                var dict = new Object();
-                                filteredJson.map(function (e) {
-                                    var timeStampDate = new Date(e.time_obs * 1000);
-                                    var niceTime = makeNiceTime(timeStampDate);
-                                    getLoudestOne(niceTime, e.db_reading, dict);
-                                });
-                                var canvas = document.createElement('canvas'),
-                                chartId = 'chart' + e.user_id;
-                                canvas.id = chartId;
-                                var heading1 = document.createElement("H2"); //creates heading2 tag
-                                var chartLabel = document.createTextNode(e.user_id); //creates label text //uncomment once we are ready to call api for user list
-                                //var chartLabel = document.createTextNode(item); //creates label text //comment once we are ready to call api for user list
-                                heading1.appendChild(chartLabel);//appends heading2 to the text
-                                document.querySelector("#chartContainer").appendChild(heading1); //appends label to chartContainer div
-                                document.querySelector("#chartContainer").appendChild(canvas);// appends chart to chartCOntainer div
-                                //document.body.appendChild(canvas) //old code
-
-                                var context = document.getElementById(chartId).getContext('2d');
-                                window[chartId] = new Chart(context, {
-                                    type: 'line',
-                                    data: {
-                                        //Bring in data
-                                        labels: Object.keys(dict),
-                                        datasets: [
-                                            {
-                                                label: "DB Levels",
-                                                data: Object.values(dict),
-                                            }
-                                        ]
-                                    },
-                                    options: {
-                                        title: {
-                                            display: true,
-                                            //text: item //comment once we are ready to use api to call for user list
-                                            text: e.user_id //uncomment once we are ready to use api to call for user list
-                                        },
-                                        scales: {
-                                            xAxes: [{
-                                                ticks: {
-                                                    maxTicksLimit: 20
-                                                }
-                                            }],
-                                            yAxes: [{
-                                                ticks: {
-                                                    beginAtZero: true
-                                                }
-                                            }]
-                                        }
+                            ]
+                        },
+                        options: {
+                            title: {
+                                display: true,
+                                text: e.user_id,
+                                position: 'top',
+                                fontSize: 30,
+                                fontColor: '#000000'
+                            },
+                            layout: {
+                                padding: {
+                                    top: 20,
+                                    bottom: 20
+                                }
+                            },
+                            scales: {
+                                xAxes: [{
+                                    ticks: {
+                                        maxTicksLimit: 20
                                     }
-                                });
-
-                            //});
-                        }); //uncomment once we are ready to use api to call for user list
-                    //}); //comment once we are ready to use api to call for user list
-            }); //uncomment once we are ready to use api to call for user list
-        }); //uncomment once we are ready to use api to call for user list
+                                }],
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                });
+            });
+          });
 
     }
   render() {
