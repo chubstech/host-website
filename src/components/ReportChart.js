@@ -74,7 +74,7 @@ var chartOptions = {
 
 }
 
-function makeAPIRequest(userType) {
+function makeAPIRequest(userType) { //makes API request to get each json file according to the user endpoint given 
     let api_site = 'https://cors-anywhere.herokuapp.com/https://noise-wearable.herokuapp.com/api/noise_observation/user/'+ userType;
     return fetch( api_site )
         .then((response) => {
@@ -87,7 +87,7 @@ function makeAPIRequest(userType) {
 }
 
 
-function makeAPIRequestUsers() {
+function makeAPIRequestUsers() { // Grabs the current users
     return fetch('https://cors-anywhere.herokuapp.com/https://noise-wearable.herokuapp.com/api/users')
         .then((response) => {
             return response.json();
