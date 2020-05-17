@@ -80,29 +80,29 @@ function updateChartMethod(value)
       var jsonUsers = JSON.stringify(devices);
       jsonUsers = JSON.parse(jsonUsers);
       jsonUsers.map(function (e) {
-      console.log(e.user_id);
+            //console.log(e.user_id);
             var promiseB = makeAPIRequest(e.user_id).then(info => {
-                    var json = JSON.stringify(info);
-                    json = JSON.parse(json);
-                    var today = Math.floor(new Date().getTime()/1000.0);
-                    var past = Math.round(today - 7200);
-                    var filteredJson = json.filter(function (e) {
-                        if (e.time_obs >= past && e.time_obs < today) {
-                            return e.time_obs;
-                        }
+                var json = JSON.stringify(info);
+                json = JSON.parse(json);
+                var today = Math.floor(new Date().getTime()/1000.0);
+                var past = Math.round(today - 7200);
+                var filteredJson = json.filter(function (e) {
+                    if (e.time_obs >= past && e.time_obs < today) {
+                        return e.time_obs;
                     }
-                    );
-                    var dict = new Object();
-                    filteredJson.map(function (e) {
-                        var timeStampDate = new Date(e.time_obs * 1000);
-                        var niceTime = makeNiceTime(timeStampDate);
-                        getLoudestOne(niceTime, e.db_reading, dict);
-                    });
-                    var label = Object.keys(dict).reverse();
-                    var data = Object.values(dict).reverse();
-                    updateChartHelper(window['chart'+e.user_id],label,data);
-                    setTimeout (function() {updateChartMethod(value-1);}, 60000);
-
+                }
+                );
+                var dict = new Object();
+                filteredJson.map(function (e) {
+                    var timeStampDate = new Date(e.time_obs * 1000);
+                    var niceTime = makeNiceTime(timeStampDate);
+                    getLoudestOne(niceTime, e.db_reading, dict);
+                });
+                var label = Object.keys(dict).reverse();
+                var data = Object.values(dict).reverse();
+                updateChartHelper(window['chart'+e.user_id],label,data);
+                setTimeout(function () { updateChartMethod(value - 1); }, 60000); //comment to update on its own
+                //setInterval(function () { updateChartMethod(value - 1); }, 60000); //uncomment to update on its own
           });
       });
     });
@@ -110,20 +110,20 @@ function updateChartMethod(value)
 
 const Home = () => {
     return (
-      <div>
-        <h1>Noise Manager WebApp</h1>
+        <div>
+            <h1>Noise Manager WebApp</h1>
             <p>Real time data of each section/device</p>
             <div id="chartContainer">
                 <IoTChart />
             </div>
             <script>
             $(document).ready(function() {
-              setTimeout (function() {updateChartMethod(100);}, 70000)
+                    setTimeout(function () { updateChartMethod(100); }, 70000) //comment to update on its own
+                //setInterval(function () { updateChartMethod(100) }, 60000) //uncomment to update on its own
             };
             </script>
       </div>
     );
-
 }
 
 export default Home;
