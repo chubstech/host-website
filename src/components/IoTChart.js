@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { Component } from 'react';
 import Chart from "chart.js";
-var Component = React.Component;
+import { Line } from 'react-chartjs-2';
+import 'chartjs-plugin-streaming';
+//var Component = React.Component;
 
 function makeAPIRequest(userType) {
     var baseAPIURL = 'https://cors-anywhere.herokuapp.com/https://noise-wearable.herokuapp.com/api/noise_observation/user/';
@@ -60,7 +62,7 @@ export default class IoTChart extends Component {
             var jsonUsers = JSON.stringify(devices);
             jsonUsers = JSON.parse(jsonUsers);
             jsonUsers.map(function (e) {
-            console.log(e.user_id);
+            //console.log(e.user_id);
                 var promiseB = makeAPIRequest(e.user_id).then(info => {
                     var json = JSON.stringify(info);
                     json = JSON.parse(json);
@@ -93,15 +95,13 @@ export default class IoTChart extends Component {
                         data: {
                             //Bring in data
                             labels: Object.keys(dict).reverse(),
-                            datasets: [
-                                {
-                                    label: "DB Levels",
-                                    data: Object.values(dict).reverse(),
-                                    borderColor: 'rgb(147, 215, 245)',
-                                    fill: false,
-                                    pointBackgroundColor: 'rgb(135, 188, 200)'
-                                }
-                            ]
+                            datasets: [{
+                                label: "DB Levels",
+                                data: Object.values(dict).reverse(),
+                                borderColor: 'rgb(135, 188, 200)',
+                                backgroundColor: 'rgba(147, 215, 245, 0.5)',
+                                lineTension: 0,
+                            }]
                         },
                         options: {
                             title: {
@@ -119,11 +119,19 @@ export default class IoTChart extends Component {
                             },
                             scales: {
                                 xAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Time (hh:mm 12-Hour)'
+                                    },
                                     ticks: {
                                         maxTicksLimit: 20
                                     }
                                 }],
                                 yAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Recorded Decibels (dB)'
+                                    },
                                     ticks: {
                                         beginAtZero: true
                                     }

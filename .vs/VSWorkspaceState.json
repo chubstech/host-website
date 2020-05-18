@@ -1,11 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\public",
     "\\src",
     "\\src\\components",
-    "\\src\\test-data-files"
+    "\\src\\pages"
   ],
-  "SelectedNode": "\\src\\test-data-files\\users.json",
+  "SelectedNode": "\\src\\components\\IoTChart.js",
   "PreviewInSolutionExplorer": false
 }
