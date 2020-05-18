@@ -1,6 +1,5 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
-import Button from 'react-bootstrap/Button';
 let color_count = 0;
 
 
@@ -10,26 +9,36 @@ function getAvgHourlyData( json_data ) { //Gathers the db Levels of each hour fr
   let avg = 0;
   let avgBase = 0;
 
-    let result = [];
+    let last_12hours = [];
     let activeHour = 0;
     let dbAvg = 0;
     let hourlyNumCount = 0;
-    // let chart_index = [0,1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12];
     let final_result = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];//25
-    let activeDate = 0;
+    let zero_hr = 0;
+    let zeroNumCount = 0;
 
+    var today = new Date();
     for(let i = 0; i < json_data.length ; i++) {
         var time = new Date( json_data[i].time_obs *1000 );
-
-        if( activeHour == 0 ) {
-            activeHour = time.getHours();
-        } else if ( time.getHours() != activeHour ) {
-            result.push( [Math.round(dbAvg / hourlyNumCount), activeHour ])
-            activeHour = time.getHours();
-            dbAvg = 0;
-            hourlyNumCount = 0;
-        } else if ( i == json_data.length-1 ) {
-            result.push( [Math.round(dbAvg / hourlyNumCount), activeHour ])
+        if( time.getDate() > today.getDate()-1 && time.getHours() < today.getHours() ) {// This only checks if the data is on the 2 day list limit until current time
+            if( activeHour == 0 ) {
+                activeHour = time.getHours();
+            } else if ( time.getHours() != activeHour ) { //Runs this if it's a new hour
+                 if ( time.getDate() == today.getDate()  && activeHour <= today.getHours()) {
+                    last_12hours.push( [Math.round(dbAvg / hourlyNumCount), activeHour ])
+                    activeHour = time.getHours();
+                    dbAvg = 0;
+                    hourlyNumCount = 0;
+                }
+            } 
+            
+             if ( activeHour == 0 ) {
+                zero_hr+= json_data[i].db_reading;
+                zeroNumCount++;
+            } else {
+                dbAvg+= json_data[i].db_reading;
+                hourlyNumCount++;
+            }
         }
         dbAvg+= json_data[i].db_reading;
         if (json_data[i].db_reading >= peak) {
@@ -45,16 +54,24 @@ function getAvgHourlyData( json_data ) { //Gathers the db Levels of each hour fr
         hourlyNumCount++;
 
     }
-    for( var s = 0; s < result.length; s++){ // Loops through the list to put it on the final list that is shown in the data
-            let desiredIndex = result[s][1] ;
-            final_result[ desiredIndex ] = result[s][0];
-            if (result[s][0] !== 0) {
-              avg += result[s][0];
-              avgBase++;
-            }
-    }
-    return [final_result, Math.round(avg/avgBase), peak, peaktimes[peak]];
 
+    last_12hours.push( [Math.round(zero_hr / zeroNumCount), 0 ]) //adds 12AM time
+
+    let startIndex = 24-today.getHours();
+
+    for( var i=0; i < last_12hours.length; i++){ 
+        final_result[startIndex] = last_12hours[(last_12hours.length-1)-i][0];
+        startIndex++;
+    }
+
+    for( var s = 0; s < last_12hours.length; s++){ // Loops through the list to put it on the final list that is shown in the data
+        if (last_12hours[s][0] !== 0) {
+          avg += last_12hours[s][0];
+          avgBase++;
+        }
+}
+
+    return [final_result, Math.round(avg/avgBase), peak, peaktimes[peak]];
 }
 
 function createDataset( user_file, user ) { //Creates a dataset given the json file
@@ -66,7 +83,7 @@ function createDataset( user_file, user ) { //Creates a dataset given the json f
         fill:false,
         backgroundColor: colors[color_count],
         borderColor: colors[color_count],
-        data: help[0],
+         data: help[0],
         avg: help[1],
         peak: help[2],
         peaktimes: help[3]
@@ -120,6 +137,29 @@ function makeAPIRequestUsers() {
         });
 }
 
+function getTimeAxis() { // returns a list of all labels for the 24 hr time frame
+
+    let axis_list = [];
+    const time_stamps = [ [13, 1], [14, 2], [15, 3], [16, 4], [17, 5], [18, 6], [19, 7], [20, 8], [21, 9], [22, 10], [23, 11], [24, 12]];
+    var today = new Date();
+    let currentHr = today.getHours();
+    for(let i = 0; i < 25 ; i++) { 
+        let decrementedHr = currentHr - i;
+        if( decrementedHr >= 12 ) {//Checks if time is after 12pm 
+            if(decrementedHr == 12) { axis_list.unshift( decrementedHr + 'PM' ); }
+            for(let a = 0; a < time_stamps.length ; a++) { 
+                if( time_stamps[a][0] == decrementedHr){  axis_list.unshift( time_stamps[a][1] + 'PM' );}
+            }
+        } else if ( decrementedHr == 0) {
+            axis_list.unshift( '12AM');
+            currentHr = i + 24; 
+        } else if( decrementedHr < 12) {
+            axis_list.unshift( decrementedHr + 'AM' );
+        } 
+    }
+    return axis_list;
+}
+
 
 
 class ReportChart extends React.Component {
@@ -127,9 +167,8 @@ class ReportChart extends React.Component {
     constructor(props) {
         super(props);
         this.chartReference = React.createRef();
-        this.label = ['12AM', '1AM', '2AM', '3AM', '4AM', '5AM', '6AM', '7AM', '8AM','9AM','10AM','11AM','12PM','1PM','2PM','3PM','4PM','5PM','6PM','7PM','8PM', '9PM', '10PM', '11PM'];
+        this.label = getTimeAxis();
         this.state = {
-            text: 'Weekly Report',
             chartData:
              {
                 labels: this.label,
@@ -139,15 +178,6 @@ class ReportChart extends React.Component {
         };
 
     }
-
-    changeText = () => { //Changes text whenever the button is clicked -- going to add the functionality to switch graphs
-        if ( this.state.text == 'Weekly Report' ) {
-            this.setState({ text: 'Daily Report' });
-        } else {
-            this.setState({ text: 'Weekly Report' });
-
-        }
-      }
 
 
 
@@ -163,9 +193,10 @@ class ReportChart extends React.Component {
                     var json = JSON.stringify(info);
                     json = JSON.parse(json);
                     var dataset = createDataset( json, json[0].user_id );
-                                                              console.log(dataset);
+                    console.log(dataset);
                     dataset_list.push( dataset);
                     if ( dataset_list.length == jsonUsers.length) {
+                        getTimeAxis();
                         this.setState({
                             chartData: {
                                 datasets: dataset_list
@@ -175,7 +206,6 @@ class ReportChart extends React.Component {
                     }
                 });
         });
-
 
     });
 
