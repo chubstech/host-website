@@ -17,13 +17,6 @@ object-assign
  * Released under the MIT License
  */
 
-/*!
- * chartjs-plugin-streaming v1.8.0
- * https://nagix.github.io/chartjs-plugin-streaming
- * (c) 2019 Akihiko Kusanagi
- * Released under the MIT license
- */
-
 /** @license React v0.18.0
  * scheduler.production.min.js
  *
