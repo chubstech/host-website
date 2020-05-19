@@ -118,7 +118,7 @@ const Home = () => {
             </div>
             <script>
             $(document).ready(function() {
-                    setTimeout(function () { updateChartMethod(100); }, 70000) //comment to update on its own
+                 //   setTimeout(function () { updateChartMethod(100); }, 70000) //comment to update on its own
                 //setInterval(function () { updateChartMethod(100) }, 60000) //uncomment to update on its own
             };
             </script>
