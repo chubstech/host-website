@@ -59,20 +59,35 @@ function makeNiceTime(dateObj)
 
 }
 
-function updateChartHelper(chart, label, data)
-{
+function updateChartHelper(chart, label, data){
   //this is what actually updates the charts
-  console.log(chart);
-  chart.data.labels = label;
-  var new_data = data.map(x=>+x);
-  chart.data.datasets.forEach((dataset) => {
-    dataset.data.pop();
-  });
-  chart.data.datasets.forEach((dataset) => {
-       dataset.data.push(new_data);
-   });
+    //console.log(chart); // gives you all the current chart info yay 
+    for (var i = 0; i < label.length; i++) {
+        if (chart.data.labels.includes(label[i]) == false) {
+            //console.log(label[i]);
+            //console.log(chart.data.labels.includes(label[i]));
+            chart.data.datasets[0].data.push(data[i]);
+            chart.data.labels.push(label[i]);
+        }
+    }
   chart.update();
 }
+
+/*
+function updateChartHelper(chart, label, data) {
+    //this is what actually updates the charts
+    console.log(chart);
+    chart.data.labels = label;
+    var new_data = data.map(x => +x);
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.pop();
+    });
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.push(new_data);
+    });
+    chart.update();
+}
+*/
 
 function updateChartMethod(value)
 {
@@ -80,30 +95,29 @@ function updateChartMethod(value)
       var jsonUsers = JSON.stringify(devices);
       jsonUsers = JSON.parse(jsonUsers);
       jsonUsers.map(function (e) {
-            //console.log(e.user_id);
-            var promiseB = makeAPIRequest(e.user_id).then(info => {
-                var json = JSON.stringify(info);
-                json = JSON.parse(json);
-                var today = Math.floor(new Date().getTime()/1000.0);
-                var past = Math.round(today - 7200);
-                var filteredJson = json.filter(function (e) {
-                    if (e.time_obs >= past && e.time_obs < today) {
-                        return e.time_obs;
-                    }
+        //console.log(e.user_id);
+        var promiseB = makeAPIRequest(e.user_id).then(info => {
+            var json = JSON.stringify(info);
+            json = JSON.parse(json);
+            var today = Math.floor(new Date().getTime()/1000.0);
+            var past = Math.round(today - 7200);
+            var filteredJson = json.filter(function (e) {
+                if (e.time_obs >= past && e.time_obs < today) {
+                    return e.time_obs;
                 }
-                );
-                var dict = new Object();
-                filteredJson.map(function (e) {
-                    var timeStampDate = new Date(e.time_obs * 1000);
-                    var niceTime = makeNiceTime(timeStampDate);
-                    getLoudestOne(niceTime, e.db_reading, dict);
-                });
-                var label = Object.keys(dict).reverse();
-                var data = Object.values(dict).reverse();
-                updateChartHelper(window['chart'+e.user_id],label,data);
-                setTimeout(function () { updateChartMethod(value - 1); }, 60000); //comment to update on its own
-                //setInterval(function () { updateChartMethod(value - 1); }, 60000); //uncomment to update on its own
-          });
+            }
+            );
+            var dict = new Object();
+            filteredJson.map(function (e) {
+                var timeStampDate = new Date(e.time_obs * 1000);
+                var niceTime = makeNiceTime(timeStampDate);
+                getLoudestOne(niceTime, e.db_reading, dict);
+            });
+            var label = Object.keys(dict).reverse();
+            var data = Object.values(dict).reverse();
+            updateChartHelper(window['chart'+e.user_id],label,data);
+            setTimeout(function () { updateChartMethod(value - 1); }, 60000);
+        });
       });
     });
 }
@@ -117,9 +131,9 @@ const Home = () => {
                 <IoTChart />
             </div>
             <script>
-            $(document).ready(function() {
-                 //   setTimeout(function () { updateChartMethod(100); }, 70000) //comment to update on its own
-                //setInterval(function () { updateChartMethod(100) }, 60000) //uncomment to update on its own
+                $(document).ready(function() {
+                    setTimeout(function () { updateChartMethod(100); }, 3000)
+                 //   setTimeout(function () { updateChartMethod(100); }, 70000)
             };
             </script>
       </div>
