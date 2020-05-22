@@ -137,7 +137,43 @@ export default class IoTChart extends Component {
                             },
                             annotation: {
                                 drawTime: 'afterDatasetsDraw',
-                                
+                                // Adds colored lines that marks baselines for peaceful, harmful, disruptive noise levels
+                                annotations: [
+                                    {
+                                        drawTime: 'afterDraw',
+                                        id: 'good', // optional
+                                        type: 'line',
+                                        mode: 'horizontal',
+                                        scaleID: 'y-axis-0',
+                                        value: '35',
+                                        borderColor: 'rgba(33, 150, 64, 0.8)',
+                                        borderWidth: 2,
+                                        borderDash: [10, 5]
+                                    },
+                                    {
+                                        drawTime: 'afterDraw',
+                                        id: 'warning', // optional
+                                        type: 'line',
+                                        mode: 'horizontal',
+                                        scaleID: 'y-axis-0',
+                                        value: '48',
+                                        //borderColor: 'rgba(255, 254, 0, 0.8)',
+                                        borderColor: 'rgba(255, 146, 0, 0.8)',
+                                        borderWidth: 2,
+                                        borderDash: [10, 5]
+                                    },
+                                    {
+                                        drawTime: 'afterDraw',
+                                        id: 'bad', // optional
+                                        type: 'line',
+                                        mode: 'horizontal',
+                                        scaleID: 'y-axis-0',
+                                        value: '70',
+                                        borderColor: 'rgba(255, 25, 25, 0.8)',
+                                        borderWidth: 2,
+                                        borderDash: [10, 5]
+                                    }
+                                ]
                             }
                         }
                     });
