@@ -61,7 +61,6 @@ function makeNiceTime(dateObj)
 
 function updateChartHelper(chart, label, data){
   //this is what actually updates the charts
-    //console.log(chart); // gives you all the current chart info yay 
     for (var i = 0; i < label.length; i++) {
         if (chart.data.labels.includes(label[i]) == false) {
             //console.log(label[i]);
@@ -95,7 +94,6 @@ function updateChartMethod(value)
       var jsonUsers = JSON.stringify(devices);
       jsonUsers = JSON.parse(jsonUsers);
       jsonUsers.map(function (e) {
-        //console.log(e.user_id);
         var promiseB = makeAPIRequest(e.user_id).then(info => {
             var json = JSON.stringify(info);
             json = JSON.parse(json);
@@ -130,10 +128,10 @@ const Home = () => {
             <div id="chartContainer">
                 <IoTChart />
             </div>
+          
             <script>
                 $(document).ready(function() {
-                    setTimeout(function () { updateChartMethod(100); }, 3000)
-                 //   setTimeout(function () { updateChartMethod(100); }, 70000)
+                 setTimeout(function () { updateChartMethod(100); }, 70000)
             };
             </script>
       </div>

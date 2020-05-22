@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Chart from "chart.js";
-import { Line } from 'react-chartjs-2';
-import 'chartjs-plugin-streaming';
-//var Component = React.Component;
+import 'chartjs-plugin-annotation';
 
 function makeAPIRequest(userType) {
     var baseAPIURL = 'https://cors-anywhere.herokuapp.com/https://noise-wearable.herokuapp.com/api/noise_observation/user/';
@@ -62,7 +60,6 @@ export default class IoTChart extends Component {
             var jsonUsers = JSON.stringify(devices);
             jsonUsers = JSON.parse(jsonUsers);
             jsonUsers.map(function (e) {
-            //console.log(e.user_id);
                 var promiseB = makeAPIRequest(e.user_id).then(info => {
                     var json = JSON.stringify(info);
                     json = JSON.parse(json);
@@ -92,13 +89,17 @@ export default class IoTChart extends Component {
                         data: {
                             //Bring in data
                             labels: Object.keys(dict).reverse(),
-                            datasets: [{
-                                label: "DB Levels",
-                                data: Object.values(dict).reverse(),
-                                borderColor: 'rgb(135, 188, 200)',
-                                backgroundColor: 'rgba(147, 215, 245, 0.5)',
-                                lineTension: 0,
-                            }]
+                            datasets: [
+                                {
+                                    label: "DB Levels",
+                                    padding: 100,
+                                    data: Object.values(dict).reverse(),
+                                    borderColor: 'rgb(135, 188, 200)',
+                                    backgroundColor: 'rgba(147, 215, 245, 0.5)',
+                                    lineTension: 0
+                                },
+                               
+                            ]
                         },
                         options: {
                             title: {
@@ -132,7 +133,11 @@ export default class IoTChart extends Component {
                                     ticks: {
                                         beginAtZero: true
                                     }
-                                }]
+                                }],
+                            },
+                            annotation: {
+                                drawTime: 'afterDatasetsDraw',
+                                
                             }
                         }
                     });
