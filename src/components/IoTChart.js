@@ -90,6 +90,7 @@ export default class IoTChart extends Component {
                             //Bring in data
                             labels: Object.keys(dict).reverse(),
                             datasets: [
+                                // Displays each element in a legend above chart
                                 {
                                     label: "DB Levels",
                                     padding: 100,
@@ -98,7 +99,28 @@ export default class IoTChart extends Component {
                                     backgroundColor: 'rgba(147, 215, 245, 0.5)',
                                     lineTension: 0
                                 },
-                               
+                                {
+                                    label: "Peaceful",
+                                    borderColor: 'rgb(33, 150, 64)',
+                                    borderWidth: 2,
+                                    backgroundColor: 'rgba(33, 150, 64, 0.5)',
+                                    borderDash: [10, 5],
+                                },
+                                {
+                                    label: "Disruptive",
+                                    borderColor: 'rgba(255, 146, 0, 0.8)',
+                                    backgroundColor: 'rgba(255, 146, 0, 0.5)',
+                                    borderWidth: 2,
+                                    borderDash: [10, 5],
+
+                                },
+                                {
+                                    label: "Harmful",
+                                    borderColor: 'rgb(255, 25, 25)',
+                                    backgroundColor: 'rgba(255, 25, 25, 0.5)',
+                                    borderWidth: 2,
+                                    borderDash: [10, 5],
+                                }
                             ]
                         },
                         options: {
@@ -137,7 +159,6 @@ export default class IoTChart extends Component {
                             },
                             annotation: {
                                 drawTime: 'afterDatasetsDraw',
-                                // Adds colored lines that marks baselines for peaceful, harmful, disruptive noise levels
                                 annotations: [
                                     {
                                         drawTime: 'afterDraw',
