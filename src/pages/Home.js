@@ -63,30 +63,12 @@ function updateChartHelper(chart, label, data){
   //this is what actually updates the charts
     for (var i = 0; i < label.length; i++) {
         if (chart.data.labels.includes(label[i]) == false) {
-            //console.log(label[i]);
-            //console.log(chart.data.labels.includes(label[i]));
             chart.data.datasets[0].data.push(data[i]);
             chart.data.labels.push(label[i]);
         }
     }
   chart.update();
 }
-
-/*
-function updateChartHelper(chart, label, data) {
-    //this is what actually updates the charts
-    console.log(chart);
-    chart.data.labels = label;
-    var new_data = data.map(x => +x);
-    chart.data.datasets.forEach((dataset) => {
-        dataset.data.pop();
-    });
-    chart.data.datasets.forEach((dataset) => {
-        dataset.data.push(new_data);
-    });
-    chart.update();
-}
-*/
 
 function updateChartMethod(value)
 {
