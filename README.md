@@ -1,3 +1,9 @@
+## Production build
+
+`npm run build`
+
+This can be served from the server
+
 ## How to clone and push changes for this GitHub Pages site on your local computer
 1.	Make sure the latest version of Node.JS and is installed on your computer. This will allow you to use the 'npm' commands.
 2. Clone 'chubstech/host-website' onto your computer by inputting this command into your terminal: 'git clone https://github.com/chubstech/host-website.git'
